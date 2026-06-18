@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUBE-ISO | Parametric Modular Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        arch: {
+                            dark: '#121212',
+                            panel: '#1e1e1e',
+                            light: '#f4f4f5',
+                            accent: '#e63946', /* Matching the red vertical circulation in the diagrams */
+                            leaseable: '#e29578', /* Orange from the plan */
+                            mech: '#e5e5e5' /* Tan/grey from the plan */
+                        }
+                    }
+                }
+            }
+        }
+
+        // Image fallback script
+        function handleImageError(img) {
+            img.onerror = null;
+            img.classList.add('hidden');
+            img.nextElementSibling.classList.remove('hidden');
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for an architectural feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e63946; }
+        
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Image placeholder styling */
+        .img-fallback {
+            background: repeating-linear-gradient(45deg, #1e1e1e, #1e1e1e 10px, #2a2a2a 10px, #2a2a2a 20px);
+        }
+    </style>
+</head>
+<body class="bg-arch-dark text-arch-light font-sans antialiased selection:bg-arch-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-arch-dark/90 backdrop-blur-md border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 border-2 border-arch-accent rounded-sm"></div>
+                <span class="font-display font-bold text-xl tracking-widest uppercase">QUBE-ISO</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm tracking-wider text-gray-400">
+                <a href="#concept" class="hover:text-white transition-colors">Concept</a>
+                <a href="#specifications" class="hover:text-white transition-colors">Specifications</a>
+                <a href="#gallery" class="hover:text-white transition-colors">Gallery</a>
+            </div>
+            <button class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden min-h-[80vh] flex items-center">
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#e63946 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="max-w-7xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-block px-3 py-1 mb-6 border border-arch-accent/50 text-arch-accent text-xs tracking-widest font-mono rounded-full bg-arch-accent/10">
+                    PARAMETRIC DEVELOPMENT MODULE
+                </div>
+                <h1 class="text-5xl md:text-7xl font-display font-bold leading-tight mb-6">
+                    Spatial <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-arch-accent to-orange-500">Scalability.</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
+                    A comprehensive modular grid system for multi-leaseable spaces. Based on a strict 3x3x3 meter parametric ratio, QUBE-ISO optimizes structural integrity, MEP routing, and architectural flexibility.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#specifications" class="px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors">Explore Specs</a>
+                    <a href="#gallery" class="px-6 py-3 border border-gray-600 rounded hover:border-white transition-colors">View Studies</a>
+                </div>
+            </div>
+            
+            <!-- Hero Image / Main Overview -->
+            <div class="relative w-full aspect-square md:aspect-[4/3] rounded-lg overflow-hidden border border-white/10 group bg-arch-panel shadow-2xl">
+                <img src="QUBE.jpg" alt="QUBE-ISO Layout Overview" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="handleImageError(this)">
+                <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 p-8 text-center">
+                    <svg class="w-12 h-12 mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <p class="font-mono text-sm">Image Reference Placeholder</p>
+                    <p class="text-xs mt-2">QUBE.jpg</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- The 3x3x3 Concept -->
+    <section id="concept" class="py-20 bg-arch-panel border-y border-white/5 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">The 3×3×3 Paradigm</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">The fundamental DNA of the QUBE-ISO system is standardizing volume to maximize spatial efficiency and structural predictability.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- X Axis -->
+                <div class="p-8 border border-white/10 bg-arch-dark rounded-lg relative overflow-hidden group hover:border-arch-accent/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 text-6xl font-display text-white/5 group-hover:text-arch-accent/10 transition-colors">X</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">3m Width</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Standardized bay width allows for predictable facade panelling, interchangeable interior partition walls, and optimal daylight penetration ratios.</p>
+                </div>
+                <!-- Y Axis -->
+                <div class="p-8 border border-white/10 bg-arch-dark rounded-lg relative overflow-hidden group hover:border-arch-accent/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 text-6xl font-display text-white/5 group-hover:text-arch-accent/10 transition-colors">Y</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">3m Depth</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">The structural grid extends longitudinally in 3-meter increments, creating highly divisible leaseable spaces perfectly suited for micro-commercial or modular residential use.</p>
+                </div>
+                <!-- Z Axis -->
+                <div class="p-8 border border-white/10 bg-arch-dark rounded-lg relative overflow-hidden group hover:border-arch-accent/50 transition-colors">
+                    <div class="absolute top-0 right-0 p-4 text-6xl font-display text-white/5 group-hover:text-arch-accent/10 transition-colors">Z</div>
+                    <h3 class="text-xl font-bold mb-2 text-white">3m Height</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Floor-to-floor height set precisely at 3 meters. This allows for a 2.6m clear acoustic ceiling height with a dedicated 400mm plenum for decentralized MEP and HVAC routing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications Interactive Tabs -->
+    <section id="specifications" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Technical Specifications</h2>
+                    <p class="text-gray-400">Detailed system breakdown of the parametric core.</p>
+                </div>
+                
+                <!-- Tab Buttons -->
+                <div class="flex bg-arch-panel p-1 rounded-lg border border-white/10">
+                    <button onclick="openTab('arch')" id="btn-arch" class="tab-btn px-6 py-2 rounded text-sm font-medium transition-all bg-white text-black shadow-sm">Architectural</button>
+                    <button onclick="openTab('struct')" id="btn-struct" class="tab-btn px-6 py-2 rounded text-sm font-medium text-gray-400 hover:text-white transition-all">Structural</button>
+                    <button onclick="openTab('mep')" id="btn-mep" class="tab-btn px-6 py-2 rounded text-sm font-medium text-gray-400 hover:text-white transition-all">MEP / HVAC</button>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 min-h-[500px]">
+                
+                <!-- Info Panel -->
+                <div class="bg-arch-panel border border-white/10 rounded-xl p-8 relative overflow-hidden">
+                    
+                    <!-- Architectural Tab -->
+                    <div id="tab-arch" class="tab-content active">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded bg-white/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold">Architectural Strategy</h3>
+                        </div>
+                        <ul class="space-y-6 text-gray-300">
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Leaseable Space Allocation</strong>
+                                <span class="text-sm">Configured in raw 9m² (3x3) blocks. Units can be combined seamlessly without load-bearing interruptions. Marked as the orange zones in the master plan.</span>
+                            </li>
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Vertical & Horizontal Circulation</strong>
+                                <span class="text-sm">Centralized lift lobbies (Grey) serve as the primary artery. Egress and secondary vertical circulation utilize decentralized stair cores (Red) situated at the perimeter wings.</span>
+                            </li>
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Facade & Envelope</strong>
+                                <span class="text-sm">Standardized 3m-wide modular exterior panels. Allows for rapid assembly of glazing, solid insulation panels, or passive shading fins depending on orientation.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Structural Tab -->
+                    <div id="tab-struct" class="tab-content">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded bg-white/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold">Structural Matrix</h3>
+                        </div>
+                        <ul class="space-y-6 text-gray-300">
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Parametric Grid (3000mm)</strong>
+                                <span class="text-sm">Rigid 3m x 3m column layout utilizing reinforced concrete or steel composite members. Ensures universal load distribution and eliminates the need for expensive transfer slabs.</span>
+                            </li>
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Floor Slabs</strong>
+                                <span class="text-sm">Pre-cast or post-tensioned 200mm slabs optimized for the 3m span. Minimal deflection allows for varied loading scenarios from light commercial to heavy storage.</span>
+                            </li>
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Core Stability</strong>
+                                <span class="text-sm">Lateral wind and seismic forces are resisted by the central lift core and the rigid perimeter stairwell enclosures (acting as shear walls).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- MEP Tab -->
+                    <div id="tab-mep" class="tab-content">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded bg-white/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold">MEP, Electrical & HVAC</h3>
+                        </div>
+                        <ul class="space-y-6 text-gray-300">
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Centralized Shafts (Tan Zone)</strong>
+                                <span class="text-sm">Primary wet lines (plumbing) and heavy mechanical exhaust are routed through dedicated shafts immediately adjacent to the central lobby for easy maintenance access.</span>
+                            </li>
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Plug-and-Play HVAC</strong>
+                                <span class="text-sm">Decentralized VRF systems or chilled water branches are distributed within the 400mm ceiling plenum. Each 3x3 block has standardized punch-out points in the framing for easy ducting.</span>
+                            </li>
+                            <li class="flex flex-col gap-1">
+                                <strong class="text-white">Electrical Grid Distribution</strong>
+                                <span class="text-sm">Busbar systems run along the main corridors. Each leaseable module taps into this grid directly, allowing individual sub-metering and scalable power drops without rewiring the building core.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- Reference Images corresponding to specs -->
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="rounded-xl overflow-hidden border border-white/10 relative group bg-arch-dark h-64 shadow-lg">
+                        <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs font-mono border border-white/10 z-10">Structure / Envelope Analysis</div>
+                        <img src="building iso-facade and structure study.jpg" alt="Building ISO Facade and Structure Study" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="handleImageError(this)">
+                        <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 text-center p-4">
+                            <p class="font-mono text-sm">Image Reference Placeholder</p>
+                            <p class="text-xs mt-2">building iso-facade and structure study.jpg</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl overflow-hidden border border-white/10 relative group bg-arch-dark h-64 shadow-lg">
+                        <div class="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs font-mono border border-white/10 z-10">Elevation & X-Ray Section</div>
+                        <img src="elevation-section xray.jpg" alt="Elevation Section Xray" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="handleImageError(this)">
+                        <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 text-center p-4">
+                            <p class="font-mono text-sm">Image Reference Placeholder</p>
+                            <p class="text-xs mt-2">elevation-section xray.jpg</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Studies Gallery -->
+    <section id="gallery" class="py-24 bg-arch-dark relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-2">Project Models & Diagrams</h2>
+                <p class="text-gray-400">Visual studies of the structural frame, floor plans, and final envelope.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
+                
+                <!-- Gallery Item 1 -->
+                <div class="rounded-lg overflow-hidden border border-white/10 relative group bg-arch-panel shadow-md lg:col-span-2 lg:row-span-2">
+                    <img src="structure approach.jpg" alt="Structure Approach" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="handleImageError(this)">
+                    <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 text-center p-4">
+                        <svg class="w-8 h-8 mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="font-mono text-sm">Structure Approach</p>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                        <h4 class="font-bold text-lg">Structural Framework</h4>
+                        <p class="text-sm text-gray-300">Overview of the modular grid showing vertical stair circulation.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="rounded-lg overflow-hidden border border-white/10 relative group bg-arch-panel shadow-md">
+                    <img src="3d iso model.jpg" alt="3D Iso Model" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="handleImageError(this)">
+                    <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 text-center p-4">
+                        <svg class="w-8 h-8 mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="font-mono text-sm">3D Iso Model</p>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                        <h4 class="font-bold">Facade Massing</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="rounded-lg overflow-hidden border border-white/10 relative group bg-arch-panel shadow-md">
+                    <img src="perspective plan.jpg" alt="Perspective Plan" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 object-center" onerror="handleImageError(this)">
+                    <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 text-center p-4">
+                        <svg class="w-8 h-8 mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="font-mono text-sm">Perspective Plan</p>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                        <h4 class="font-bold">Grid Layout</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="rounded-lg overflow-hidden border border-white/10 relative group bg-arch-panel shadow-md lg:col-span-3 h-80">
+                    <img src="structure-close up.jpg" alt="Structure Close Up" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="handleImageError(this)">
+                    <div class="hidden absolute inset-0 flex-col items-center justify-center img-fallback text-gray-500 text-center p-4">
+                        <svg class="w-8 h-8 mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <p class="font-mono text-sm">Structure Close Up</p>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                        <h4 class="font-bold text-lg">Connection Details</h4>
+                        <p class="text-sm text-gray-300">Close up of column-to-slab junctions and core integration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-arch-dark py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-5 h-5 border-2 border-gray-600 rounded-sm"></div>
+                <span class="font-display font-bold text-lg tracking-widest uppercase text-gray-400">QUBE-ISO</span>
+            </div>
+            <p class="text-sm text-gray-600">Parametric Multi-Leaseable Concept Proposal &copy; 2026</p>
+        </div>
+    </footer>
+
+    <!-- Tab Logic -->
+    <script>
+        function openTab(tabName) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Reset all buttons
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-white', 'text-black', 'shadow-sm');
+                el.classList.add('text-gray-400');
+            });
+            
+            // Show target content
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+            
+            // Highlight target button
+            const btn = document.getElementById(`btn-${tabName}`);
+            btn.classList.remove('text-gray-400');
+            btn.classList.add('bg-white', 'text-black', 'shadow-sm');
+        }
+    </script>
+</body>
+</html>
