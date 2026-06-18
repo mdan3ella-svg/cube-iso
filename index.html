@@ -64,6 +64,7 @@
             <div class="hidden md:flex gap-8 text-sm tracking-wider text-gray-400">
                 <a href="#concept" class="hover:text-white transition-colors">Concept</a>
                 <a href="#specifications" class="hover:text-white transition-colors">Specifications</a>
+                <a href="#interactive-model" class="hover:text-white transition-colors">3D Model</a>
                 <a href="#gallery" class="hover:text-white transition-colors">Gallery</a>
             </div>
             <button class="md:hidden text-white">
@@ -252,6 +253,40 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive 3D Model Section -->
+    <section id="interactive-model" class="py-24 relative bg-arch-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Interactive Explorer</h2>
+                    <p class="text-gray-400">Navigate the QUBE-ISO parametric framework in real-time 3D.</p>
+                </div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded bg-arch-panel border border-white/10 text-sm text-gray-400 shadow-sm">
+                    <svg class="w-4 h-4 text-arch-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                    <span>Click and drag to rotate, scroll to zoom</span>
+                </div>
+            </div>
+            
+            <div class="w-full aspect-square md:aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black relative">
+                <!-- Sketchfab iframe embedding -->
+                <iframe 
+                    title="CUBE-ISO 3D Model" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking 
+                    execution-while-out-of-viewport 
+                    execution-while-not-rendered 
+                    web-share 
+                    src="https://sketchfab.com/models/5b948e380dd04ea09aa5327f53118ac9/embed?autostart=0&ui_theme=dark&dnt=1&ui_infos=0" 
+                    class="absolute inset-0 w-full h-full">
+                </iframe>
             </div>
         </div>
     </section>
